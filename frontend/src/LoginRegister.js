@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function LoginRegister() {
-    function SwitchContent(){
+    function SwitchContent() {
         const content = document.getElementById('content')
         const registerBtn = document.getElementById('register')
         const loginBtn = document.getElementById('login')
@@ -9,7 +9,7 @@ export default function LoginRegister() {
         registerBtn.addEventListener('click', () => {
             content.classList.add('active')
         })
-        
+
         loginBtn.addEventListener('click', () => {
             content.classList.remove('active')
         })
