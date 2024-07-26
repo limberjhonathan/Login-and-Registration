@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 export default function LoginRegister() {
     function SwitchContent() {
@@ -15,23 +17,35 @@ export default function LoginRegister() {
         })
 
     }
+    const [username, setUsername] = useState([])
+    const [email, setEmail] = useState([])
+    const [password, setPassword] = useState([])
+    const navigate = useNavigate()
+
+    function register(event){
+        event.preventDefaut()
+        axios.post("http://localhost:3000/register", {username, email, password})
+        .then(res => {
+            navigate("/home")
+        }).catch(err => console.log(err))
+    }
 
     return (
         <div className='content justify-content-center align-items-center d-flex shadow-lg' id='content'>
             {/* -----------------------Register------------------------ */}
             <div className='col-md-6 d-flex justify-content-center'>
-                <form>
+                <form onSubmit={register}>
                     <div className='header-text mb-4'>
                         <h1>Create Account</h1>
                     </div>
                     <div className='input-group mb-3'>
-                        <input type='text' placeholder='Name' className='form-control form-control-lg bg-light fs-6' />
+                        <input type='text' placeholder='Name' className='form-control form-control-lg bg-light fs-6' onChange={e => setUsername(e.target.value)}/>
                     </div>
                     <div className='input-group mb-3'>
-                        <input type='email' placeholder='Email' className='form-control form-control-lg bg-light fs-6' />
+                        <input type='email' placeholder='Email' className='form-control form-control-lg bg-light fs-6' onChange={e => setEmail(e.target.value)}/>
                     </div>
                     <div className='input-group mb-3'>
-                        <input type='password' placeholder='Password' className='form-control form-control-lg bg-light fs-6' />
+                        <input type='password' placeholder='Password' className='form-control form-control-lg bg-light fs-6' onChange={e => setPassword(e.target.value)}/>
                     </div>
                     <div className='input-group mb-3 justify-content-center'>
                         <button className='btn border-white text-white w-50 fs-6'>Register</button>
