@@ -6,6 +6,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LoginRegister/>}></Route>
+        <Route path='/register' element={<LoginRegister/>}></Route>
       </Routes>
     </BrowserRouter>
   );
