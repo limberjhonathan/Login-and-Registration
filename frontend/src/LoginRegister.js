@@ -17,6 +17,23 @@ export default function LoginRegister() {
       .catch(err => console.log(err));
   }
 
+  const [values, setValues] = useState({
+    email:'',
+    password:''
+  })
+
+  function login(event){
+    event.preventDefault()
+    axios.post("http://localhost:3000/login", values)
+    .then(res => {
+      if(res.data.Status === "Success"){
+        navigate("/home")
+      }else{
+        alert(res.data.Error)
+      }
+    }).catch(err => console.log(err))
+  }
+
   function switchContent() {
     const content = document.getElementById('content');
     content.classList.toggle('active');
@@ -46,15 +63,15 @@ export default function LoginRegister() {
       </div>
       {/* -----------------------Login Form------------------------ */}
       <div className='col-md-6 right-box'>
-        <form>
+        <form onSubmit={login}>
           <div className='header-text mb-4'>
             <h1>Sign In</h1>
           </div>
           <div className='input-group mb-3'>
-            <input type='email' placeholder='Email' className='form-control form-control-lg bg-light fs-6' />
+            <input type='email' placeholder='Email' className='form-control form-control-lg bg-light fs-6' onChange={e => setValues({...values, email:e.target.value})}/>
           </div>
           <div className='input-group mb-3'>
-            <input type='password' placeholder='Password' className='form-control form-control-lg bg-light fs-6' />
+            <input type='password' placeholder='Password' className='form-control form-control-lg bg-light fs-6' onChange={e => setValues({...values, password:e.target.value})}/>
           </div>
           <div className='input-group mb-5 d-flex justify-content-between'>
             <div className='form-check'>
