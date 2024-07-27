@@ -16,7 +16,7 @@ const db = mysql.createConnection({
     database: 'db'
 })
 
-app.post("register", (req, res) => {
+app.post("/register", (req, res) => {
     const sql = "INSER INTO usuarios ('username', 'email, 'password') VALUES (?)";
     bycrypt.hash(req.body.password.toString(), salt, (err, hash) => {
         if(err) return res.json("Error")
