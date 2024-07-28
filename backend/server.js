@@ -41,7 +41,10 @@ app.post("/login", (req, res) => {
         if (result.length > 0) {
             bcrypt.compare(req.body.password.toString(), result[0].password, (err, response) => {
                 if (err) return res.json({ Error: "Error" });
-                if (response) return res.json({ Status: "Success" });
+                if (response) {
+                    console.log(result)
+                    return res.json({ Status: "Success", username: result[0].username});
+                }
                 else return res.json({ Error: "Wrong password" });
             });
         } else {

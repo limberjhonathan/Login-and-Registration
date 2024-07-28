@@ -12,7 +12,7 @@ export default function LoginRegister() {
     event.preventDefault();
     axios.post("http://localhost:3000/register", { username, email, password })
       .then(res => {
-        navigate("/home");
+        navigate("/home", { state: { username } });
       })
       .catch(err => console.log(err));
   }
@@ -27,7 +27,8 @@ export default function LoginRegister() {
     axios.post("http://localhost:3000/login", values)
     .then(res => {
       if(res.data.Status === "Success"){
-        navigate("/home")
+        const username = res.data.username;
+        navigate("/home", { state: { username } })
       }else{
         alert(res.data.Error)
       }
