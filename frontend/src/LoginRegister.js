@@ -28,6 +28,7 @@ export default function LoginRegister() {
     .then(res => {
       if(res.data.Status === "Success"){
         const username = res.data.username;
+        // console.log(username)
         navigate("/home", { state: { username } })
       }else{
         alert(res.data.Error)
