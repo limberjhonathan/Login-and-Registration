@@ -25,6 +25,9 @@ Este projeto é composto por um frontend em React e um backend em Node.js, ambos
 | <img src="https://github.com/user-attachments/assets/08fe762e-3d84-4156-9680-35d6e608f3e6" alt="Imagem 1" width="400px"> | <img src="https://github.com/user-attachments/assets/54435d7a-24f8-4fbc-8257-922cb69e3afc" alt="Imagem 2" width="400px"> | <img src="https://github.com/user-attachments/assets/0dd60e3e-979e-453d-9a91-f81cda26db30" alt="Imagem 3" width="400px"> |
 
 
+https://github.com/user-attachments/assets/58022807-b16c-4d39-baa9-1b358c992ade
+
+
 ### Tecnologias Utilizadas
 
 - **Frontend**: React
